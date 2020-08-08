@@ -65,3 +65,7 @@ find $ROOT_PATH/tests/queries -iname '*fail*' | grep . && echo 'Tests should not
 
 # All the submodules should be from https://github.com/
 find $ROOT_PATH -name '.gitmodules' | while read i; do grep -F 'url = ' $i | grep -v -F 'https://github.com/' && echo 'All the submodules should be from https://github.com/'; done
+
+# Check for typos in code
+CURDIR=$(dirname "${BASH_SOURCE[0]}")
+"${CURDIR}"/check-typos
